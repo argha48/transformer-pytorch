@@ -20,6 +20,14 @@ This repo comes with example data in `data/` directory. To begin, you will need 
 $ python prepare_datasets.py --train_source=data/example/raw/src-train.txt --train_target=data/example/raw/tgt-train.txt --val_source=data/example/raw/src-val.txt --val_target=data/example/raw/tgt-val.txt --save_data_dir=data/example/processed
 ```
 
+```
+python prepare_datasets.py --train_source=data/example/raw/src-train.txt --train_target=data/example/raw/src-train.txt --val_source=data/example/raw/src-val.txt --val_target=data/example/raw/src-val.txt --save_data_dir=data/example/processed --share_dictionary=True
+
+```
+
+
+
+
 The example data is brought from [OpenNMT-py](https://github.com/OpenNMT/OpenNMT-py).
 The data consists of parallel source (src) and target (tgt) data for training and validation.
 A data file contains one sentence per line with tokens separated by a space.
@@ -34,7 +42,7 @@ Below are the provided example data files.
 To train model, provide the train script with a path to processed data and save files as follows:
 
 ```
-$ python train.py --data_dir=data/example/processed --save_config=checkpoints/example_config.json --save_checkpoint=checkpoints/example_model.pth --save_log=logs/example.log 
+$ python train.py --data_dir=data/example/processed --save_config=checkpoints/example_config.json --save_checkpoint=checkpoints/example_model.pth --save_log=logs/example.log --epochs=10
 ```
 
 This saves model config and checkpoints to given files, respectively.
@@ -44,7 +52,7 @@ For example, add `--epochs=300` to set the number of epochs to 300.
 ### Translate
 To translate a sentence in source language to target language:
 ```
-$ python predict.py --source="There is an imbalance here ." --config=checkpoints/example_config.json --checkpoint=checkpoints/example_model.pth
+$ python predict.py --source="There is an imbalance here ." --config=checkpoints/example_config.json --checkpoint=checkpoints/example_model.pth --num_candidates=4
 
 Candidate 0 : Hier fehlt das Gleichgewicht .
 Candidate 1 : Hier fehlt das das Gleichgewicht .

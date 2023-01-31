@@ -1,4 +1,4 @@
-from predictors import Predictor
+from predictors import Predictor, ExtractEmbeddings
 from models import build_model
 from datasets import IndexedInputTargetTranslationDataset
 from dictionaries import IndexDictionary
